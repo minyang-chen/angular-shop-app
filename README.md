@@ -1,17 +1,25 @@
+## Angular Shop Project  
+Developing angular project in dev container setup 
 
-### dev-run
+### local dev run
 ng server --port=4200
 
-## Docket build
-docker run --name myshop -d -p 8080:80 shopstore
-
-## run docker image
+### docker build
 docker build -t shopstore .
 
+### docker run
 docker run --name myshop -d -p 8080:80 shopstore
 
+docker run \
+    -it \
+    --rm \
+    -v ${PWD}:/app \
+    -v /app/node_modules \
+    -p 3001:3000 \
+    -e CHOKIDAR_USEPOLLING=true \
+    sample:dev
 
-Deploy stage
+### deploy in gitlab cicd
 
 As mentioned at the beginning, we want to deploy the application to AWS. Though, this article does not cover provisioning AWS services such as S3, but focuses solely on the deployment to an existing AWS infrastructure.
 
